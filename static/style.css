@@ -1,0 +1,230 @@
+/* ---------- 全体 ---------- */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #e0f7fa;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 10px;
+}
+
+h1 {
+    text-align: center;
+    color: #00796b;
+}
+
+/* 最終資産カードをコンパクトに */
+.result-card {
+    text-align: center;
+    font-size: 1em;       /* 文字を大きくして強調 */
+    color: #004d40;
+    padding: 10px 10px;   /* 上下の余白を少なめに */
+    margin: 10px 0;       /* カード間の余白を少し減らす */
+}
+
+/* 他のカードは少し余白を広めに */
+.card {
+    background-color: #ffffff;
+    padding: 10px 10px;   /* 少し調整 */
+    margin: 10px 0;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+
+/* ---------- ラベルと入力 ---------- */
+label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+
+input[type=number] {
+    width: 150px;
+    margin-left: 10px;
+}
+
+/* ---------- スライダー共通 ---------- */
+input[type=range] {
+    -webkit-appearance: none;
+    width: 300px;
+    height: 12px;           /* トラックの高さ */
+    border-radius: 6px;
+    background: #c8e6c9;
+    outline: none;
+    margin-left: 10px;
+    transition: background 0.3s;
+    position: relative;
+}
+
+/* ---------- スライダーのつまみ ---------- */
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #4caf50;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    transition: background 0.3s, transform 0.2s;
+    margin-top: -6px; /* トラック中央に配置 */
+}
+
+input[type=range]::-webkit-slider-thumb:hover {
+    background: #81c784;
+    transform: scale(1.2);
+}
+
+/* Firefox用 */
+input[type=range]::-moz-range-thumb {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #4caf50;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    transition: background 0.3s, transform 0.2s;
+}
+
+input[type=range]::-moz-range-thumb:hover {
+    background: #81c784;
+    transform: scale(1.2);
+}
+
+/* ---------- スライダートラック ---------- */
+input[type=range]::-webkit-slider-runnable-track {
+    height: 12px;
+    border-radius: 6px;
+    background: linear-gradient(to right, #a5d6a7, #66bb6a);
+}
+
+input[type=range]::-moz-range-track {
+    height: 12px;
+    border-radius: 6px;
+    background: linear-gradient(to right, #a5d6a7, #66bb6a);
+}
+
+
+/* ===========================
+   区間ボックス（ボックスA）
+=========================== */
+/* 区間セクション全体 */
+#periodSection {
+    margin-top: 20px;
+}
+
+/* 区間追加・削除ボタン */
+.period-header {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.period-header .btn {
+    background-color: #00796b;
+    color: #fff;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.period-header .btn:hover {
+    background-color: #004d40;
+    transform: scale(1.05);
+}
+
+/* 横スクロールボックス */
+.scroll-box {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 12px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    padding: 10px;
+    border-radius: 10px;
+    background: #fafafa;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+    scroll-behavior: smooth;
+}
+
+/* 区間ボックス */
+.period-card {
+    display: inline-block;
+    background-color: #f1f8e9;
+    padding: 12px;
+    border-radius: 12px;
+    min-width: 220px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+/* ホバー */
+.period-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* 選択状態 */
+.period-card.selected {
+    border: 3px solid #26a69a;
+    background-color: #e0f2f1;
+    box-shadow: 0 0 12px rgba(38, 166, 154, 0.6);
+    transform: scale(1.03);
+}
+
+.period-card h4 {
+    margin: 6px 0 8px 0;
+    color: #00796b;
+    font-size: 1rem;
+    border-bottom: 2px solid #b2dfdb;
+    padding-bottom: 3px;
+}
+
+/* スクロールバー */
+.scroll-box::-webkit-scrollbar {
+    height: 8px;
+}
+.scroll-box::-webkit-scrollbar-thumb {
+    background-color: #b2dfdb;
+    border-radius: 4px;
+}
+.scroll-box::-webkit-scrollbar-track {
+    background-color: #f5f5f5;
+}
+
+
+/* ドラッグ中に空いたスペース */
+.placeholder {
+    border: 2px dashed #ccc;
+    border-radius: 12px;
+    background-color: #f8f8f8;
+    opacity: 0.6;
+    transition: all 0.15s ease;
+}
+
+/* ドラッグ中のカード */
+.period-card.dragging {
+    opacity: 0.9;
+    transform: scale(1.05);
+    cursor: grabbing;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    transition: transform 0.15s ease;
+}
+
+/* ドラッグ可能カーソル */
+.period-card {
+    cursor: grab;
+    transition: transform 0.15s ease;
+}

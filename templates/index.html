@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>複利計算サイト</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>複利計算サイト</h1>
+
+        <div class="card">
+            <form id="calcForm">
+                <!-- 元本 -->
+                <label>元本:
+                    <input type="number" id="principalInput" name="principal" value="1000000" required>
+                    <input type="range" id="principalRange" min="0" max="1000" step="1">
+                </label>
+                
+
+                <!-- 年利 -->
+                <label>年利 (%):
+                    <input type="number" id="annualRateInput" name="annual_rate" value="5" min="0" max="100" step="0.01" required>
+                    <input type="range" id="annualRateRange" min="0" max="25" step="0.01">
+                </label>
+
+                <!-- 期間 -->
+                <label>期間 (年):
+                    <input type="number" id="yearsInput" name="years" value="10" min="1" max="100" step="1" required>
+                    <input type="range" id="yearsRange" min="0" max="70" step="1">
+                </label>
+
+                <!-- 毎月追加 -->
+                <label>毎月追加投資:
+                    <input type="number" id="monthlyInput" name="monthly_addition" value="10000" min="0" max="1000000" step="1000">
+                    <input type="range" id="monthlyRange" min="0" max="200000" step="1000">
+                </label>
+                <label id="extraLabel" style="display:none;">
+                    特別出費収入:
+                    <input type="number" id="specialIncomeInput" value="0" min="0" step="1000">
+                </label>
+                
+            </form>
+        </div>
+        <div class="card" id="periodSection">
+            <div class="period-header">
+                <button id="addPeriod" class="btn add">＋ 区間追加</button>
+                <button id="removePeriod" class="btn remove">− 区間削除</button>
+            </div>
+        
+            <!-- 横スクロール領域 -->
+            <div id="periodContainer" class="scroll-box">
+                <!-- 区間カードがここに動的追加される -->
+            </div>
+        </div>
+        
+        
+        <div class="card result-card">
+            <h2>最終資産: <span id="result">0</span> 円</h2>
+        </div>
+
+        <div class="card">
+            <h2>資産推移グラフ</h2>
+            <canvas id="growthChart" width="800" height="400"></canvas>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
